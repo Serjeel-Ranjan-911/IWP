@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="employees.xsl"?>
+
+<employees xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="employees.xsd">
+
+
+    <employee>
+        <name>Employee1</name>
+        <age>20</age>
+        <id>id1</id>
+        <about>Good employee</about>
+    </employee>
+
+    <employee>
+        <name>Employee2</name>
+        <age>20</age>
+        <id>id2</id>
+        <about>Good employee</about>
+    </employee>
+
+    <employee>
+        <name>Employee3</name>
+        <age>20</age>
+        <id>id3</id>
+        <about>Good employee</about>
+    </employee>
+
+</employees> 

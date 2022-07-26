@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inputs</title>
+</head>
+<body>
+    <form id="form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+    </br>
+        <!-- take email as input -->
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" />
+    </br>
+        <!-- take password as input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+    </br>
+        <!-- make select input  -->
+        <label for="select">Select:</label>
+        <select id="select" name="select">
+            <option value="Goa">Goa</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+        </select>
+    </br>
+        <!-- select date as input -->
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" />
+    </br>
+        <!-- take number as input -->
+        <label for="number">Number:</label>
+        <input type="number" id="number" name="number" />
+    </br>
+        <!-- create few checkboxes -->
+        <label for="checkbox">Checkbox:</label>
+
+        <input type="checkbox" id="checkbox1" name="checkbox1" />
+        <label for="checkbox1">Checkbox 1</label>
+        <input type="checkbox" id="checkbox2" name="checkbox2" />
+        <label for="checkbox2">Checkbox 2</label>
+        <input type="checkbox" id="checkbox3" name="checkbox3" />
+        <label for="checkbox3">Checkbox 3</label>
+
+    </br>
+        <!-- create few radio buttons -->
+        <label for="radio">Radio:</label>
+
+        <input type="radio" id="radio" name="radio" value="Goa" />
+        <label for="radio">Goa</label>
+        <input type="radio" id="radio" name="radio" value="Chennai" />
+        <label for="radio">Chennai</label>
+        <input type="radio" id="radio" name="radio" value="Mumbai" />
+        <label for="radio">Mumbai</label>
+        <input type="radio" id="radio" name="radio" value="Bangalore" />
+        <label for="radio">Bangalore</label>
+    </br>
+        <!-- create textarea -->
+        <label for="textarea">Textarea:</label>
+        <textarea id="textarea" name="textarea"></textarea>
+    </br>
+        <!-- take image as input -->
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" />
+    </br>
+        <!-- make hidden input -->
+        <input type="hidden" id="hidden" name="hidden" />
+
+        <input type="submit" value="Submit" />
+        
+</form>
+
+
+<!-- embed an audio file in the page -->
+<audio controls>
+  <source src="audio.mp3" type="audio/mpeg">
+
+    Your browser does not support the audio element.
+    </audio>
+    <br />
+<video controls>
+  <source src="video.mp4" type="video/mp4">
+
+    Your browser does not support the video element.
+    </video>
+    <br />
+
+    <!-- embed canvas in page -->
+    <canvas id="canvas" width="300" height="150"></canvas>
+    <br />
+
+
+<script>
+
+         // get geolocation and alert on page load
+         if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                alert("Latitude: " + position.coords.latitude +
+                    " Longitude: " + position.coords.longitude);
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+
+        
+    var form = document.getElementById('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(form);
+
+        var data = Object.fromEntries(formData);
+
+        var name = data.name;
+        var email = data.email;
+        var password = data.password;
+        var select = data.select;
+        var date = data.date;
+        var number = data.number;
+        var checkbox1 = data.checkbox1;
+        var checkbox2 = data.checkbox2;
+        var checkbox3 = data.checkbox3;
+        var radio = data.radio;
+        var textarea = data.textarea;
+        var image = data.image;
+        var hidden = data.hidden;
+
+        //validate email
+        var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(!emailRegex.test(email)){
+            alert("Invalid email");
+            return false;
+        }
+        //validate password
+        var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if(!passwordRegex.test(password)){
+            alert("Invalid password");
+            return false;
+        }
+        //validate number
+        var numberRegex = /^[0-9]+$/;   
+        if(!numberRegex.test(number)){
+            alert("Invalid number");
+            return false;
+        }
+        //validate textarea
+        var textareaRegex = /^[a-zA-Z0-9 ]+$/;
+        if(!textareaRegex.test(textarea)){
+            alert("Invalid textarea");
+            return false;
+        }
+
+       
+    });
+
+
+      //draw something on canvas
+      var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgb(200,0,0)';
+        ctx.fillRect(10, 10, 55, 50);
+     
+</script>
+
+</body>
+</html>
